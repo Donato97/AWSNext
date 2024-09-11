@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "donatoawsnext",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-09-11T10:29:57.886Z"
+}
