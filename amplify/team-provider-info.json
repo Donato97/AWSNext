@@ -10,6 +10,11 @@
       "StackName": "amplify-donatoawsnext-dev-e238f",
       "StackId": "arn:aws:cloudformation:eu-west-3:103990129728:stack/amplify-donatoawsnext-dev-e238f/4a6fd140-6eb6-11ef-b68f-0e0c22a4df9b",
       "AmplifyAppId": "d3ojdahs04sus5"
+    },
+    "categories": {
+      "auth": {
+        "donatoawsnextc1b0d7e4": {}
+      }
     }
   }
 }
