@@ -4,9 +4,12 @@ export default function Navbar() {
 	return (
 		<nav className="flex justify-between px-10 py-5">
 			<ul className="flex gap-5">
-				<li>Movies</li>
-				<li>Tv Series</li>
-				<li>About me</li>
+				<li>
+					<Link href="/">Home</Link>
+				</li>
+				<li>
+					<Link href="/todos">Todos</Link>
+				</li>
 			</ul>
 			<ul className="flex gap-5">
 				<li>

@@ -1,11 +1,11 @@
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
-  todos: [Todo] @hasMany
+  todos: [Todo!] @hasMany
 }
 
 type Todo @model @auth(rules: [{allow: public}]) {
   id: ID!
-  items: [TodoItem] @hasMany
+  items: [TodoItem!] @hasMany
   title: String
 }
 
