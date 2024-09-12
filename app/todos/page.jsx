@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { getCurrentUser } from "aws-amplify/auth";
 import { generateClient } from "aws-amplify/api";
 import { Amplify } from "aws-amplify";
-import { createTodo } from "@/src/graphql/mutations";
-import { listTodos } from "@/src/graphql/queries";
 import config from "@/src/amplifyconfiguration.json" with {type: "json"};
+import TodoList from "./components/TodoList";
+import { listTodosWithItems } from "@/src/graphql/customQueries";
+import { createTodoWithItems } from "@/src/graphql/customMutations";
 
 
 Amplify.configure(config);
@@ -18,12 +19,11 @@ export default function Todos() {
     const [todos, setTodos] = useState([]);
 
     async function createTodoAction(formData) {
-        const newList = await client.graphql({
-            query: createTodo,
+        const {data} = await client.graphql({
+            query: createTodoWithItems,
             variables: { input: { title: formData.get("title"), userTodosId: userId.current } }
         });
-        console.log(newList);
-
+        setTodos((prev)=>[...prev,data.createTodo]);
     }
 
     async function getUser() {
@@ -32,7 +32,7 @@ export default function Todos() {
     }
     async function getAllTodos() {
         const { data } = await client.graphql({
-            query: listTodos,
+            query: listTodosWithItems,
             variables: {
                 filter: {
                     userTodosId: { eq: userId.current }
@@ -62,7 +62,7 @@ export default function Todos() {
                 </form>
             </section>
             <section>
-                {todos.map((todo) => todo.title)}
+                <TodoList list={todos} />
             </section>
         </main>
     );
